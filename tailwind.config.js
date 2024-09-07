@@ -6,10 +6,18 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+    theme: {
+      extend: {
+        container: {
+          center: true,
+          padding: {
+            DEFAULT: "2rem",
+          },
+        },
+        fontFamily: {
+          poppins: ["Poppins", "sans-serif"],
+          roboto: ["Roboto", "sans-serif"],
+        },
       },
     },
   },
