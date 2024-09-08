@@ -1,10 +1,15 @@
+import PhotoList from "@/components/PhotoList";
 import { getDictionary } from "./dictionaries";
 
+const apiData = process.env.BASE_API_URL;
+
 export default async function Home({ params: { lang } }) {
-  const dictionary = await getDictionary(lang);
+  const response = await fetch(`${apiData}/photos`);
+  const photos = await response.json();
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      Photo Feed -- {dictionary.followers}
-    </div>
+    <main className=" md:px-24 px-1">
+      <PhotoList photos={photos} />
+    </main>
   );
 }

@@ -3,8 +3,8 @@ import Logo from "./Logo";
 
 const Navbar = () => {
   return (
-    <nav className="py-4 md:py-6 border-b">
-      <div className="container mx-auto flex items-center justify-between gap-x-6">
+    <nav className=" mt-1  shadow-lg  md:px-24 mb-10">
+      <div className="container p-2 mx-auto flex items-center justify-between gap-x-6">
         <Logo />
       </div>
     </nav>
