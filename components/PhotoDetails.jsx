@@ -2,7 +2,7 @@ import { getDictionary } from "@/app/[lang]/dictionaries";
 import Image from "next/image";
 import React from "react";
 
-const apiData = process.env.BASE_API_URL;
+const apiData = process.env.NEXT_PUBLIC_BASE_API_URL;
 
 const PhotoDetails = async ({ id, lang }) => {
   const response = await fetch(`${apiData}/photos/${id}`);

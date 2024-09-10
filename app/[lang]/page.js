@@ -1,7 +1,7 @@
 import PhotoList from "@/components/PhotoList";
 import { getDictionary } from "./dictionaries";
 
-const apiData = process.env.BASE_API_URL;
+const apiData = process.env.NEXT_PUBLIC_BASE_API_URL;
 
 export default async function Home({ params: { lang } }) {
   const response = await fetch(`${apiData}/photos`);
