@@ -1,20 +1,37 @@
 "use client";
 
 import Image from "next/image";
-import React, { useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useRef, useCallback } from "react";
 import { createPortal } from "react-dom";
 
 const Modal = ({ children }) => {
+  const router = useRouter();
   const modalRef = useRef(null);
-  console.log(modalRef.current);
+
+  const onHide = useCallback(() => {
+    router.back();
+  }, [router]);
+
+  const handleKeyDown = useCallback(
+    (event) => {
+      if (event.key === "Escape") {
+        onHide();
+      }
+    },
+    [onHide]
+  );
 
   useEffect(() => {
     if (!modalRef.current?.open) {
       modalRef.current?.showModal();
     }
-  }, []);
+    window.addEventListener("keydown", handleKeyDown);
 
-  function onHide() {}
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [handleKeyDown]);
 
   return createPortal(
     <dialog
